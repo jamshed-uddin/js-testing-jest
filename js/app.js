@@ -1,10 +1,4 @@
-const {
-  createElement,
-  getUserInputs,
-  checkAndGenerate,
-} = require("./lib.js");
-
-const postToServer = require('./postToServer');
+const { createElement, getUserInputs, checkAndGenerate } = require("./lib.js");
 
 const init = () => {
   // initiate the app & register button click listener
@@ -16,8 +10,13 @@ const addPost = async () => {
   // get user input fields
   const { useridInput, titleInput, articleInput } = getUserInputs();
 
+  console.log(articleInput);
   // check and generate
-  const resultText = await checkAndGenerate(useridInput.value, titleInput.value, articleInput.value);
+  const resultText = await checkAndGenerate(
+    useridInput.value,
+    titleInput.value,
+    articleInput.value
+  );
 
   // create single article container
   const element = createElement("p", resultText);
